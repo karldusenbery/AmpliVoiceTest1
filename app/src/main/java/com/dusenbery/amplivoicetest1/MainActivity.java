@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeViews() {
-        registerBtn = findViewById(R.id.register);
-        loginBtn = findViewById(R.id.login);
+        registerBtn = findViewById(R.id.btnRegister);
+        loginBtn = findViewById(R.id.btnLogin);
     }
 }

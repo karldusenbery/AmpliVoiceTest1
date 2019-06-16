@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText emailTV, passwordTV;
+    private EditText et_FirstName, et_LastName, et_Email, et_Password;
     private Button regBtn;
     private ProgressBar progressBar;
 
@@ -43,10 +43,20 @@ public class RegistrationActivity extends AppCompatActivity {
     private void registerNewUser() {
         progressBar.setVisibility(View.VISIBLE);
 
-        String email, password;
-        email = emailTV.getText().toString();
-        password = passwordTV.getText().toString();
+        String firstName, lastName, email, password;
+        firstName = et_FirstName.getText().toString();
+        lastName= et_LastName.getText().toString();
+        email = et_Email.getText().toString();
+        password = et_Password.getText().toString();
 
+        if (TextUtils.isEmpty(firstName)) {
+            Toast.makeText(getApplicationContext(), "Please enter a first name...", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(lastName)) {
+            Toast.makeText(getApplicationContext(), "Please enter a last name...", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
             return;
@@ -76,9 +86,11 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void initializeUI() {
-        emailTV = findViewById(R.id.email);
-        passwordTV = findViewById(R.id.password);
-        regBtn = findViewById(R.id.register);
+        et_FirstName = findViewById(R.id.etFirstName);
+        et_LastName = findViewById(R.id.etLastName);
+        et_Email = findViewById(R.id.etEmail);
+        et_Password = findViewById(R.id.etPassword);
+        regBtn = findViewById(R.id.btnRegister);
         progressBar = findViewById(R.id.progressBar);
     }
 }

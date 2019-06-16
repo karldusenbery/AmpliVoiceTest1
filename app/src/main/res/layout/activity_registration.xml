@@ -10,7 +10,7 @@
     tools:context=".RegistrationActivity">
 
     <TextView
-        android:id="@+id/register_text"
+        android:id="@+id/tvRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -20,7 +20,7 @@
         android:textColor="#007AFF"
         android:textSize="28sp" />
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/etFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -28,7 +28,7 @@
         android:hint="First name"
         android:background="@drawable/myedittext"/>
     <EditText
-        android:id="@+id/lastName"
+        android:id="@+id/etLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -37,7 +37,7 @@
         android:background="@drawable/myedittext"/>
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -46,7 +46,7 @@
         android:background="@drawable/myedittext"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -56,7 +56,7 @@
         android:background="@drawable/myedittext"/>
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"

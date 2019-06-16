@@ -76,10 +76,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initializeUI() {
-        emailTV = findViewById(R.id.email);
-        passwordTV = findViewById(R.id.password);
+        emailTV = findViewById(R.id.etEmail);
+        passwordTV = findViewById(R.id.etPassword);
 
-        loginBtn = findViewById(R.id.login);
+        loginBtn = findViewById(R.id.btnLogin);
         progressBar = findViewById(R.id.progressBar);
     }
 }
