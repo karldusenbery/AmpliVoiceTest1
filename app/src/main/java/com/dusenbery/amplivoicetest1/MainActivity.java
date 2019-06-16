@@ -36,17 +36,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Enable Firestore logging
-        FirebaseFirestore.setLoggingEnabled(true);
-
-        // Initialize Firestore
-        initFirestore();
     }
 
-    private void initFirestore() {
-        // Access a Cloud Firestore instance from your Activity
-        mFirestore = FirebaseFirestore.getInstance();
-    }
+
 
     private void initializeViews() {
         registerBtn = findViewById(R.id.btnRegister);

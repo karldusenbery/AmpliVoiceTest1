@@ -90,9 +90,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     }
                 });
 
-        //get first and last name strings from EditTexts and create a new User object with those Strings
-        User mUser = new User(firstName, lastName);
-
         /**
          *
          * Using SharedPreferences to store the user persistent data as a key-value pair
@@ -100,8 +97,8 @@ public class RegistrationActivity extends AppCompatActivity {
         SharedPreferences myPreferences
                 = PreferenceManager.getDefaultSharedPreferences(RegistrationActivity.this);
         SharedPreferences.Editor myEditor = myPreferences.edit();
-        myEditor.putString("FIRST_NAME", mUser.getFirstName());
-        myEditor.putString("LAST_NAME", mUser.getLastName());
+        myEditor.putString("FIRST_NAME", firstName);
+        myEditor.putString("LAST_NAME", lastName);
         myEditor.apply();
 
 
