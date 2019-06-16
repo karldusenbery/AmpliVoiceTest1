@@ -1,6 +1,8 @@
 package com.dusenbery.amplivoicetest1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +13,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.dusenbery.amplivoicetest1.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -23,6 +27,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +89,23 @@ public class RegistrationActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        //get first and last name strings from EditTexts and create a new User object with those Strings
+        User mUser = new User(firstName, lastName);
+
+        /**
+         *
+         * Using SharedPreferences to store the user persistent data as a key-value pair
+         */
+        SharedPreferences myPreferences
+                = PreferenceManager.getDefaultSharedPreferences(RegistrationActivity.this);
+        SharedPreferences.Editor myEditor = myPreferences.edit();
+        myEditor.putString("FIRST_NAME", mUser.getFirstName());
+        myEditor.putString("LAST_NAME", mUser.getLastName());
+        myEditor.apply();
+
+
+
     }
 
     private void initializeUI() {
