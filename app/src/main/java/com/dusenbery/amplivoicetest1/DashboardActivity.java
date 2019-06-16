@@ -42,13 +42,12 @@ public class DashboardActivity extends AppCompatActivity {
         // Initialize Firestore
         initFirestore();
 
-        /*
+
         // Get a reference to the users Firestore collection
         CollectionReference users = mFirestore.collection("users");
 
         // Add a new document to the users collection
         users.add(mUser);
-        */
 
 
         tvWelcomeMessage = (TextView)findViewById(R.id.tvWelcomeMessage);
