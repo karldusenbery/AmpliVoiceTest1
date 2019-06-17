@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.widget.TextView;
 
 import com.dusenbery.amplivoicetest1.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -46,9 +48,11 @@ public class DashboardActivity extends AppCompatActivity {
         // Get a reference to the users Firestore collection
         CollectionReference users = mFirestore.collection("users");
 
-        // Add a new document to the users collection
-        users.add(mUser);
+        // Gets the current authenticated user from Firebase
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        // Add a new document to the users collection with document title the same as user uid
+        users.document(user.getUid()).set(mUser);
 
         tvWelcomeMessage = (TextView)findViewById(R.id.tvWelcomeMessage);
         tvWelcomeMessage.setText("Welcome " + firstName);
