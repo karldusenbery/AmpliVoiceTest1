@@ -33,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         // Enables the back button in the action bar at the top of the screen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // Removes the app title in the action bar at the top of the screen
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         mAuth = FirebaseAuth.getInstance();
 
         initializeUI();
