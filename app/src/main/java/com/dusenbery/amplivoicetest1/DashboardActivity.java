@@ -18,7 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    private TextView tvWelcomeMessage;
+    private TextView tvFirstName;
+    private TextView tvLastName;
 
     private FirebaseFirestore mFirestore;
     private FirebaseAuth mAuth;
@@ -39,8 +40,11 @@ public class DashboardActivity extends AppCompatActivity {
         String firstName = myPreferences.getString("FIRST_NAME", "unknown");
         String lastName = myPreferences.getString("LAST_NAME", "unknown");
 
-        tvWelcomeMessage = (TextView)findViewById(R.id.tvWelcomeMessage);
-        tvWelcomeMessage.setText("Welcome " + firstName);
+        tvFirstName = (TextView)findViewById(R.id.tvFirstName);
+        tvFirstName.setText(firstName);
+
+        tvLastName = (TextView)findViewById(R.id.tvLastName);
+        tvLastName.setText(lastName);
 
         // Enable Firestore logging
         FirebaseFirestore.setLoggingEnabled(true);
