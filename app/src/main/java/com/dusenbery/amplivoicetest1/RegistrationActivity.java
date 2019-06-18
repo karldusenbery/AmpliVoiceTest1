@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +35,9 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        // Enables the back button in the action bar at the top of the screen
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -112,5 +117,22 @@ public class RegistrationActivity extends AppCompatActivity {
         et_Password = findViewById(R.id.etPassword);
         regBtn = findViewById(R.id.btnRegister);
         progressBar = findViewById(R.id.progressBar);
+    }
+
+    // Creates a listener for the action bar at the top of the screen
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    // Enables the action bar at the top of the screen
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
