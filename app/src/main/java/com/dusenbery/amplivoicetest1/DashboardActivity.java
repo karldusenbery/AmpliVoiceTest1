@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dusenbery.amplivoicetest1.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +20,8 @@ public class DashboardActivity extends AppCompatActivity {
     private TextView tvWelcomeMessage;
 
     private FirebaseFirestore mFirestore;
+
+    String userID, email, createdDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +38,8 @@ public class DashboardActivity extends AppCompatActivity {
         String lastName = myPreferences.getString("LAST_NAME", "unknown");
 
 
-        // get first and last name strings from SharedPreferences persistant data
-        // and create a new User object with those Strings
-        User mUser = new User(firstName, lastName);
+        tvWelcomeMessage = (TextView)findViewById(R.id.tvWelcomeMessage);
+        tvWelcomeMessage.setText("Welcome " + firstName);
 
         // Enable Firestore logging
         FirebaseFirestore.setLoggingEnabled(true);
@@ -44,18 +47,35 @@ public class DashboardActivity extends AppCompatActivity {
         // Initialize Firestore
         initFirestore();
 
-
         // Get a reference to the users Firestore collection
         CollectionReference users = mFirestore.collection("users");
 
         // Gets the current authenticated user from Firebase
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Add a new document to the users collection with document title the same as user uid
-        users.document(user.getUid()).set(mUser);
+        //Gets the current user's uid  from the Firestore database and stores it as a String
+        userID = user.getUid();
 
-        tvWelcomeMessage = (TextView)findViewById(R.id.tvWelcomeMessage);
-        tvWelcomeMessage.setText("Welcome " + firstName);
+        //Gets the current user's email address from the Firestore database and stores it as a String
+        email = user.getEmail();
+
+        //TODO: Gets the current user's created date from the Firestore database and stores it as a String
+        //createdDate = user.
+
+        // Creates a new User object
+        User mUser = new User(firstName, lastName);
+
+        // Sets user id field the current user object
+        mUser.setUserID(userID);
+
+        //user object data check
+        //Log.d("USERDATA", "Your user's ID is: " + mUser.getUserID());
+
+
+
+        // Add a new document to the users collection with the created User object
+        users.document(userID).set(mUser);
+
     }
 
     private void initFirestore() {
