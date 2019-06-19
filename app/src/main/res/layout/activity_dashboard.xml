@@ -52,7 +52,6 @@
 
     </RelativeLayout>
 
-
     <android.support.design.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
@@ -71,5 +70,6 @@
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal"
         app:layout_anchor="@id/bottomAppBar" />
+    */
 
 </android.support.design.widget.CoordinatorLayout>
