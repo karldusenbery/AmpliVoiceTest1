@@ -86,6 +86,12 @@ public class DashboardActivity extends AppCompatActivity {
         // Add a new document to the users collection with the created User object
         users.document(userID).set(mUser);
 
+        // bottomAppbar
+        bottomAppBar.replaceMenu(R.menu.menu_wallpaper)
+        bottomAppBar.setNavigationOnClickListener {
+            // do something interesting on navigation click
+        }
+
     }
 
     private void initFirestore() {
